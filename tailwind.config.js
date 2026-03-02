@@ -4,11 +4,21 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
   ],
-theme: {
+  theme: {
     extend: {
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
+        primary: {
+          DEFAULT: '#10b981',
+          light: '#34d399',
+          dark: '#059669',
+        },
+        accent: {
+          DEFAULT: '#14b8a6',
+          light: '#2dd4bf',
+          dark: '#0d9488',
+        },
       },
       fontFamily: {
         sans: ['DM Sans', 'sans-serif'],
