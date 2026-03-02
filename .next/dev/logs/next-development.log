@@ -1,62 +1,114 @@
-[00:00:03.862] Server  WARN    ⚠ Minimum recommended TypeScript version is v5.1.0, older versions can potentially be incompatible with Next.js. Detected: 4.9.5
-[00:00:04.715] Server  LOG     ✓ Ready in 3.3s
-[00:00:42.097] Server  WARN    ⚠ Cross origin request detected from 192.168.105.130 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+[00:00:04.741] Server  WARN    ⚠ Minimum recommended TypeScript version is v5.1.0, older versions can potentially be incompatible with Next.js. Detected: 4.9.5
+[00:00:05.538] Server  LOG     ✓ Ready in 4s
+[00:00:28.041] Server  WARN    ⚠ Cross origin request detected from 192.168.105.130 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
 Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
-[00:00:42.190] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:42.577] Browser LOG     📊 Homepage viewed at: 02/03/2026, 14:36:40
-[00:07:49.281] Server  LOG     ✓ Compiled in 3.2s
-[00:08:29.790] Browser LOG     📊 Homepage viewed at: 02/03/2026, 14:44:27
-[00:11:48.059] Server  LOG     ✓ Compiled in 408ms
-[00:14:38.854] Server  LOG     ✓ Compiled in 419ms
-[00:14:49.631] Browser LOG     📊 Homepage viewed at: 02/03/2026, 14:50:47
-[00:21:41.908] Server  LOG     ✓ Compiled in 557ms
-[00:21:53.751] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:21:53.751] Browser LOG     📊 Compress PDF page viewed at: 02/03/2026, 14:57:51
-[00:21:53.752] Browser LOG     📊 Compress PDF page viewed at: 02/03/2026, 14:57:51
-[00:22:21.848] Browser LOG     📊 Homepage viewed at: 02/03/2026, 14:58:19
-[00:22:21.848] Browser LOG     📊 Homepage viewed at: 02/03/2026, 14:58:19
-[00:28:31.212] Browser LOG     📊 Split PDF page viewed at: 02/03/2026, 15:04:29
-[00:28:34.803] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:28:34.803] Browser LOG     📊 Homepage viewed at: 02/03/2026, 15:04:32
-[00:28:34.803] Browser LOG     📊 Homepage viewed at: 02/03/2026, 15:04:32
-[00:28:52.438] Browser LOG     📊 Split PDF page viewed at: 02/03/2026, 15:04:50
-[00:29:13.754] Server  LOG     ✓ Compiled in 489ms
-[00:29:19.751] Browser LOG     📊 Split PDF page viewed at: 02/03/2026, 15:05:17
-[00:29:26.272] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:29:26.272] Browser LOG     📊 Homepage viewed at: 02/03/2026, 15:05:24
-[00:29:26.272] Browser LOG     📊 Homepage viewed at: 02/03/2026, 15:05:24
-[00:29:33.646] Browser LOG     📊 Split PDF page viewed at: 02/03/2026, 15:05:31
-[00:32:47.777] Server  LOG     ✓ Compiled in 246ms
-[00:33:32.125] Server  LOG     ✓ Compiled in 306ms
-[00:33:41.831] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:33:41.831] Browser LOG     📊 Homepage viewed at: 02/03/2026, 15:09:39
-[00:33:41.831] Browser LOG     📊 Homepage viewed at: 02/03/2026, 15:09:39
-[00:33:49.095] Browser LOG     📊 Split PDF page viewed at: 02/03/2026, 15:09:47
-[00:34:39.736] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:34:39.736] Browser LOG     📊 Homepage viewed at: 02/03/2026, 15:10:37
-[00:34:39.737] Browser LOG     📊 Homepage viewed at: 02/03/2026, 15:10:37
-[00:36:35.081] Server  LOG     ✓ Compiled in 262ms
-[00:36:48.932] Browser LOG     📊 Split PDF page viewed at: 02/03/2026, 15:12:46
-[00:37:13.153] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:37:13.153] Browser LOG     📊 Homepage viewed at: 02/03/2026, 15:13:11
-[00:37:13.153] Browser LOG     📊 Homepage viewed at: 02/03/2026, 15:13:11
-[00:37:53.278] Browser LOG     📊 Split PDF page viewed at: 02/03/2026, 15:13:51
-[00:39:00.383] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:39:00.383] Browser LOG     📊 Homepage viewed at: 02/03/2026, 15:14:58
-[00:39:00.383] Browser LOG     📊 Homepage viewed at: 02/03/2026, 15:14:58
-[00:39:06.895] Browser LOG     📊 Split PDF page viewed at: 02/03/2026, 15:15:04
-[00:39:06.895] Browser LOG     📊 Split PDF page viewed at: 02/03/2026, 15:15:04
-[00:42:07.139] Server  LOG     ✓ Compiled in 591ms
-[00:42:20.031] Browser LOG     📊 Homepage viewed at: 02/03/2026, 15:18:18
-[00:42:20.031] Browser LOG     📊 Homepage viewed at: 02/03/2026, 15:18:18
-[00:43:43.252] Browser LOG     📊 Compress PDF page viewed at: 02/03/2026, 15:19:41
-[00:43:46.050] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:43:46.050] Browser LOG     📊 Homepage viewed at: 02/03/2026, 15:19:44
-[00:43:46.050] Browser LOG     📊 Homepage viewed at: 02/03/2026, 15:19:44
-[00:45:19.397] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:45:20.110] Browser LOG     📊 Compress PDF page viewed at: 02/03/2026, 15:21:18
-[00:45:21.111] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:45:21.111] Browser LOG     📊 Homepage viewed at: 02/03/2026, 15:21:19
-[00:45:21.111] Browser LOG     📊 Homepage viewed at: 02/03/2026, 15:21:19
-[00:46:01.060] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:46:02.416] Browser LOG     📊 Homepage viewed at: 02/03/2026, 15:22:00
+[00:00:28.099] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:28.465] Browser LOG     📊 Homepage viewed at: 02/03/2026, 16:16:11
+[00:02:14.083] Server  LOG     ✓ Compiled in 3.8s
+[00:02:21.220] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:21.496] Browser LOG     📊 Homepage viewed at: 02/03/2026, 16:18:04
+[00:02:38.987] Server  LOG     ✓ Compiled in 301ms
+[00:03:44.724] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:44.980] Browser LOG     📊 Homepage viewed at: 02/03/2026, 16:19:28
+[00:04:17.276] Server  LOG     ✓ Compiled in 328ms
+[00:04:27.553] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:04:27.869] Browser LOG     📊 Homepage viewed at: 02/03/2026, 16:20:11
+[00:04:43.997] Server  LOG     ✓ Compiled in 286ms
+[00:04:57.714] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:04:58.052] Browser LOG     📊 Homepage viewed at: 02/03/2026, 16:20:41
+[00:23:53.581] Server  LOG     ✓ Compiled in 10s
+[00:25:40.262] Server  LOG     ✓ Compiled in 360ms
+[00:27:41.142] Server  LOG     ✓ Compiled in 344ms
+[00:28:12.676] Server  LOG     ✓ Compiled in 310ms
+[00:30:05.824] Server  LOG     ✓ Compiled in 336ms
+[00:31:56.484] Server  LOG     ✓ Compiled in 975ms
+[00:32:12.712] Server  LOG     ✓ Compiled in 625ms
+[00:43:24.272] Server  LOG     ✓ Compiled in 5.6s
+[00:43:24.335] Server  WARN    ⚠ ./tailwind.config.js:1:1
+Module not found: Can't resolve 'tailwindcars'
+> 1 | import { Config } from 'tailwindcars'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 |
+  3 | const config =  {
+  4 |
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:43:38.134] Server  LOG     ✓ Compiled in 9.2s
+[00:43:41.062] Browser ERROR   ./app/globals.css
+Error evaluating Node.js code
+SyntaxError: Unexpected token, expected ";" (1:8)
+    [at unexpected (/Users/prashik06/pdfkit/pdfkit/node_modules/sucrase/dist/parser/traverser/util.js:99:15)]
+    [at semicolon (/Users/prashik06/pdfkit/pdfkit/node_modules/sucrase/dist/parser/traverser/util.js:77:5)]
+    [at tsParseIdentifierStatement (/Users/prashik06/pdfkit/pdfkit/node_modules/sucrase/dist/parser/plugins/typescript.js:1473:21)]
+    [at parseIdentifierStatement (/Users/prashik06/pdfkit/pdfkit/node_modules/sucrase/dist/parser/traverser/statement.js:559:44)]
+    [at parseStatementContent (/Users/prashik06/pdfkit/pdfkit/node_modules/sucrase/dist/parser/traverser/statement.js:258:5)]
+    [at parseStatement (/Users/prashik06/pdfkit/pdfkit/node_modules/sucrase/dist/parser/traverser/statement.js:116:3)]
+    [at parseBlockBody (/Users/prashik06/pdfkit/pdfkit/node_modules/sucrase/dist/parser/traverser/statement.js:586:5)]
+    [at parseTopLevel (/Users/prashik06/pdfkit/pdfkit/node_modules/sucrase/dist/parser/traverser/statement.js:92:3)]
+    [at parseFile (/Users/prashik06/pdfkit/pdfkit/node_modules/sucrase/dist/parser/traverser/index.js:17:35)]
+    [at parse (/Users/prashik06/pdfkit/pdfkit/node_modules/sucrase/dist/parser/index.js:26:35)]
+
+Import trace:
+  Client Component Browser:
+    ./app/globals.css [Client Component Browser]
+    ./app/layout.tsx [Server Component]
+[00:45:59.100] Server  LOG     ✓ Compiled in 711ms
+[02:12:37.019] Server  LOG     ✓ Compiled in 969ms
+[02:13:25.346] Server  LOG     ✓ Compiled in 246ms
+[02:15:49.621] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:15:50.090] Browser LOG     📊 Compress PDF page viewed at: 02/03/2026, 18:31:33
+[02:15:51.588] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[02:15:51.588] Browser LOG     📊 Homepage viewed at: 02/03/2026, 18:31:34
+[02:15:51.588] Browser LOG     📊 Homepage viewed at: 02/03/2026, 18:31:34
+[02:15:57.935] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:15:58.146] Browser LOG     📊 Split PDF page viewed at: 02/03/2026, 18:31:41
+[02:15:59.870] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[02:15:59.870] Browser LOG     📊 Homepage viewed at: 02/03/2026, 18:31:43
+[02:15:59.870] Browser LOG     📊 Homepage viewed at: 02/03/2026, 18:31:43
+[02:20:08.721] Server  LOG     ✓ Compiled in 290ms
+[02:20:34.902] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:20:35.251] Browser LOG     📊 Homepage viewed at: 02/03/2026, 18:36:18
+[02:25:48.690] Server  LOG     ✓ Compiled in 343ms
+[02:28:33.956] Server  LOG     ✓ Compiled in 266ms
+[02:28:43.159] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:28:43.470] Browser LOG     📊 Homepage viewed at: 02/03/2026, 18:44:27
+[02:36:14.683] Server  LOG     ✓ Compiled in 359ms
+[02:46:42.573] Server  LOG     ✓ Compiled in 264ms
+[02:49:17.564] Server  LOG     ✓ Compiled in 261ms
+[02:52:48.792] Server  LOG     ✓ Compiled in 881ms
+[02:54:59.162] Server  LOG     ✓ Compiled in 351ms
+[03:03:48.914] Server  LOG     ✓ Compiled in 497ms
+[03:04:43.517] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[03:04:43.715] Browser LOG     📊 Compress PDF page viewed at: 02/03/2026, 19:20:27
+[03:04:46.417] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[03:04:46.417] Browser LOG     📊 Homepage viewed at: 02/03/2026, 19:20:30
+[03:04:46.417] Browser LOG     📊 Homepage viewed at: 02/03/2026, 19:20:30
+[03:04:48.401] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[03:04:48.613] Browser LOG     📊 Split PDF page viewed at: 02/03/2026, 19:20:32
+[03:04:49.965] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[03:04:49.965] Browser LOG     📊 Homepage viewed at: 02/03/2026, 19:20:33
+[03:04:49.966] Browser LOG     📊 Homepage viewed at: 02/03/2026, 19:20:33
+[03:12:04.247] Server  LOG     ✓ Compiled in 307ms
+[03:18:18.175] Server  LOG     ✓ Compiled in 394ms
+[03:18:27.078] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[03:18:27.359] Browser LOG     📊 Compress PDF page viewed at: 02/03/2026, 19:34:11
+[03:18:50.859] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[03:18:50.859] Browser LOG     📊 Homepage viewed at: 02/03/2026, 19:34:34
+[03:18:50.859] Browser LOG     📊 Homepage viewed at: 02/03/2026, 19:34:34
+[03:18:53.589] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[03:18:53.801] Browser LOG     📊 Split PDF page viewed at: 02/03/2026, 19:34:37
+[03:19:02.198] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[03:19:02.198] Browser LOG     📊 Homepage viewed at: 02/03/2026, 19:34:45
+[03:19:02.198] Browser LOG     📊 Homepage viewed at: 02/03/2026, 19:34:45
+[03:28:06.426] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[03:28:06.726] Browser LOG     📊 Compress PDF page viewed at: 02/03/2026, 19:43:50
+[03:28:23.887] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[03:28:23.887] Browser LOG     📊 Homepage viewed at: 02/03/2026, 19:44:07
+[03:28:23.887] Browser LOG     📊 Homepage viewed at: 02/03/2026, 19:44:07
+[03:41:20.481] Server  LOG     ✓ Compiled in 775ms
+[03:42:28.696] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[03:42:28.983] Browser LOG     📊 Homepage viewed at: 02/03/2026, 19:58:12

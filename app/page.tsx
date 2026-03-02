@@ -149,7 +149,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
           {/* Logo */}
           <a href="/" className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+            <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center">
               <FileText className="w-6 h-6" />
             </div>
             <span className="text-2xl font-bold font-mono">DocMerge</span>
@@ -157,31 +157,31 @@ export default function HomePage() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex gap-8 text-sm">
-            <a href="#merge" className="hover:text-blue-400 transition-colors">
+            <a href="#merge" className="hover:text-cyan-400 transition-colors">
               Merge
             </a>
             <a
               href="/tools/compress"
-              className="hover:text-blue-400 transition-colors"
+              className="hover:text-cyan-400 transition-colors"
             >
               Compress
             </a>
             <a
               href="/tools/split"
-              className="hover:text-blue-400 transition-colors"
+              className="hover:text-cyan-400 transition-colors"
             >
               Split
             </a>
             <a
               href="#pricing"
-              className="hover:text-blue-400 transition-colors"
+              className="hover:text-cyan-400 transition-colors"
             >
               Pricing
             </a>
           </nav>
 
           {/* Desktop CTA Button */}
-          <button className="hidden md:block bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-lg text-sm font-medium transition">
+          <button className="hidden md:block bg-cyan-600 hover:bg-cyan-700 px-6 py-2 rounded-lg text-sm font-medium transition">
             Sign In
           </button>
 
@@ -231,7 +231,7 @@ export default function HomePage() {
               >
                 💰 Pricing
               </a>
-              <button className="w-full bg-blue-600 hover:bg-blue-700 px-4 py-3 rounded-lg text-sm font-medium transition">
+              <button className="w-full bg-cyan-600 to-blue-600 hover:bg-cyan-700 hover:to-blue-700 px-4 py-3 rounded-lg text-sm font-medium transition">
                 Sign In
               </button>
             </nav>
@@ -241,9 +241,9 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="relative z-10 max-w-7xl mx-auto px-4 pt-20 pb-16">
         <section className="text-center max-w-4xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 mb-6">
+          <div className="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full px-4 py-2 mb-6">
             <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-            <span className="text-sm font-mono text-blue-300">
+            <span className="text-sm font-mono text-cyan-300">
               Your files never leave your browser
             </span>
           </div>
@@ -251,7 +251,7 @@ export default function HomePage() {
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
             The Easiest Way
             <br />
-            <span className="bg-gradient-to-r from-green-500 via-teal-500 to-emerald-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-cyan-400 via-sky-500 to-blue-600 bg-clip-text text-transparent">
               {" "}
               to Work with PDFs{" "}
             </span>
@@ -265,7 +265,7 @@ export default function HomePage() {
           </p>
 
           <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center px-4">
-            <button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-medium flex items-center justify-center gap-2 transition-all hover:scale-105 w-full sm:w-auto">
+            <button className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-medium flex items-center justify-center gap-2 transition-all hover:scale-105 w-full sm:w-auto">
               <Zap className="w-5 h-5" />
               Try Free Now
             </button>
@@ -288,10 +288,10 @@ export default function HomePage() {
             {/* Step 1 */}
             <div className="text-center">
               <div className="relative mb-6">
-                <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto">
+                <div className="w-20 h-20 bg-gradient-to-br from-cyan-500 to-sky-500 rounded-full flex items-center justify-center mx-auto">
                   <Upload className="w-10 h-10" />
                 </div>
-                <div className="absolute -top-2 -right-2 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-sm font-bold">
+                <div className="absolute -top-2 -right-2 w-8 h-8 bg-cyan-500 rounded-full flex items-center justify-center text-sm font-bold">
                   1
                 </div>
               </div>
@@ -305,10 +305,10 @@ export default function HomePage() {
             {/* Step 2 */}
             <div className="text-center">
               <div className="relative mb-6">
-                <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center mx-auto">
+                <div className="w-20 h-20 bg-gradient-to-br from-sky-500 to-blue-600 rounded-full flex items-center justify-center mx-auto">
                   <Zap className="w-10 h-10" />
                 </div>
-                <div className="absolute -top-2 -right-2 w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-sm font-bold">
+                <div className="absolute -top-2 -right-2 w-8 h-8 bg-sky-500 rounded-full flex items-center justify-center text-sm font-bold">
                   2
                 </div>
               </div>
@@ -322,10 +322,10 @@ export default function HomePage() {
             {/* Step 3 */}
             <div className="text-center">
               <div className="relative mb-6">
-                <div className="w-20 h-20 bg-gradient-to-br from-pink-500 to-red-600 rounded-full flex items-center justify-center mx-auto">
+                <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-full flex items-center justify-center mx-auto">
                   <Download className="w-10 h-10" />
                 </div>
-                <div className="absolute -top-2 -right-2 w-8 h-8 bg-pink-500 rounded-full flex items-center justify-center text-sm font-bold">
+                <div className="absolute -top-2 -right-2 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-sm font-bold">
                   3
                 </div>
               </div>
@@ -340,7 +340,7 @@ export default function HomePage() {
           <div className="text-center mt-12">
             <a
               href="#merge"
-              className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 py-4 rounded-lg font-medium transition-all hover:scale-105"
+              className="inline-block bg-gradient-to-r from-cyan-600 to-sky-600 hover:from-cyan-700 hover:to-sky-700 px-8 py-4 rounded-lg font-medium transition-all hover:scale-105"
             >
               Try It Now - It's Free!
             </a>
@@ -350,12 +350,12 @@ export default function HomePage() {
         {/* PDF Merge Tool */}
         <div
           id="merge"
-          className="bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-2xl p-8 max-w-4xl mx-auto backdrop-blur-sm shadow-xl shadow-blue-500/10 hover:border-blue-500/40 transition-all"
+          className="bg-gradient-to-br from-cyan-500/10 to-sky-500/10 border border-cyan-500/20 rounded-2xl p-8 max-w-4xl mx-auto backdrop-blur-sm shadow-xl shadow-cyan-500/10 hover:border-cyan-500/40 transition-all"
         >
           <div className="mb-6">
             <h2 className="text-2xl font-bold mb-2 flex items-center gap-3">
-              <div className="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center">
-                <FileText className="w-5 h-5 text-blue-400" />
+              <div className="w-8 h-8 bg-cyan-500/20 rounded-lg flex items-center justify-center">
+                <FileText className="w-5 h-5 text-cyan-400" />
               </div>
               Merge PDFs
             </h2>
@@ -370,7 +370,7 @@ export default function HomePage() {
               <div
                 className={`border-2 border-dashed rounded-xl p-6 sm:p-12 text-center transition-all ${
                   dragActive
-                    ? "border-blue-500 bg-blue-500/10"
+                    ? "border-cyan-500 bg-cyan-500/10"
                     : "border-slate-700 hover:border-slate-600"
                 }`}
                 onDragEnter={handleDrag}
@@ -422,7 +422,7 @@ export default function HomePage() {
                       className="flex items-center justify-between bg-slate-800/50 rounded-lg p-4 animate-[slideIn_0.3s_ease-out]"
                     >
                       <div className="flex items-center gap-3">
-                        <FileText className="w-5 h-5 text-blue-400" />
+                        <FileText className="w-5 h-5 text-cyan-400" />
                         <span className="font-mono text-sm">{file.name}</span>
                         <span className="text-xs text-slate-500">
                           {(file.size / 1024).toFixed(1)} KB
@@ -440,7 +440,7 @@ export default function HomePage() {
                   <button
                     onClick={mergePDFs}
                     disabled={merging || files.length < 2}
-                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 py-4 rounded-lg font-medium mt-4 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 transition-all hover:scale-[1.02]"
+                    className="w-full bg-gradient-to-r from-cyan-600 to-sky-600 hover:from-cyan-700 hover:to-sky-700 py-4 rounded-lg font-medium mt-4 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 transition-all hover:scale-[1.02]"
                   >
                     {merging ? (
                       <>
@@ -473,7 +473,7 @@ export default function HomePage() {
               <div className="flex gap-4 justify-center">
                 <button
                   onClick={downloadMergedPdf}
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 py-4 rounded-lg font-medium flex items-center gap-2 transition-all hover:scale-105"
+                  className="bg-gradient-to-r from-cyan-600 to-sky-600 hover:from-cyan-700 hover:to-sky-700 px-8 py-4 rounded-lg font-medium flex items-center gap-2 transition-all hover:scale-105"
                 >
                   <Download className="w-5 h-5" />
                   Download Merged PDF
@@ -528,7 +528,7 @@ export default function HomePage() {
           ].map((feature, index) => (
             <div
               key={index}
-              className="bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-xl p-8 hover:border-blue-500/40 transition-all hover:shadow-lg hover:shadow-blue-500/10 group"
+              className="bg-gradient-to-br from-cyan-500/10 to-sky-500/10 border border-cyan-500/20 rounded-xl p-8 hover:border-cyan-500/40 transition-all hover:shadow-lg hover:shadow-cyan-500/10 group"
             >
               <div
                 className={`w-14 h-14 bg-${feature.color}-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}
@@ -554,15 +554,15 @@ export default function HomePage() {
         <div className="grid md:grid-cols-3 gap-6">
           {/* Merge Tool */}
           <Link href="#merge">
-            <div className="bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-xl p-8 hover:border-blue-500/40 transition-all hover:scale-[1.02] cursor-pointer group">
-              <div className="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <FileText className="w-7 h-7 text-blue-400" />
+            <div className="bg-gradient-to-br from-cyan-500/10 to-sky-500/10 border border-cyan-500/20 rounded-xl p-8 hover:border-cyan-500/40 transition-all hover:scale-[1.02] cursor-pointer group">
+              <div className="w-14 h-14 bg-cyan-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <FileText className="w-7 h-7 text-cyan-400" />
               </div>
               <h3 className="text-xl font-bold mb-3">Merge PDFs</h3>
               <p className="text-slate-400 mb-4">
                 Combine multiple PDF files into a single document
               </p>
-              <span className="text-blue-400 text-sm font-medium">
+              <span className="text-cyan-400 text-sm font-medium">
                 Try it now →
               </span>
             </div>
@@ -570,15 +570,15 @@ export default function HomePage() {
 
           {/* Compress Tool */}
           <Link href="/tools/compress">
-            <div className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-xl p-8 hover:border-purple-500/40 transition-all hover:scale-[1.02] cursor-pointer group">
-              <div className="w-14 h-14 bg-purple-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <Zap className="w-7 h-7 text-purple-400" />
+            <div className="bg-gradient-to-br from-sky-500/10 to-blue-500/10 border border-sky-500/20 rounded-xl p-8 hover:border-sky-500/40 transition-all hover:scale-[1.02] cursor-pointer group">
+              <div className="w-14 h-14 bg-sky-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Zap className="w-7 h-7 text-sky-400" />
               </div>
               <h3 className="text-xl font-bold mb-3">Compress PDF</h3>
               <p className="text-slate-400 mb-4">
                 Reduce PDF file size without losing quality
               </p>
-              <span className="text-purple-400 text-sm font-medium">
+              <span className="text-sky-400 text-sm font-medium">
                 Try it now →
               </span>
             </div>
@@ -626,7 +626,7 @@ export default function HomePage() {
               server. Fast, private, and actually works!"
             </p>
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-xl font-bold">
+              <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-sky-600 rounded-full flex items-center justify-center text-xl font-bold">
                 S
               </div>
               <div>
@@ -751,9 +751,9 @@ export default function HomePage() {
           </div>
 
           {/* Premium Plan */}
-          <div className="bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-2xl p-8 relative hover:border-blue-500/40 transition-all">
+          <div className="bg-gradient-to-br from-cyan-500/10 to-sky-500/10 border border-cyan-500/20 rounded-2xl p-8 relative hover:border-cyan-500/40 transition-all">
             {/* Popular Badge */}
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-1 rounded-full text-sm font-medium">
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-1 rounded-full text-sm font-medium">
               ⭐ Most Popular
             </div>
 
@@ -767,7 +767,7 @@ export default function HomePage() {
                 <span className="text-5xl font-bold">$9</span>
                 <span className="text-slate-500">/month</span>
               </div>
-              <p className="text-sm text-blue-400 mt-2">
+              <p className="text-sm text-cyan-400 mt-2">
                 or $79/year (save 26%)
               </p>
             </div>
@@ -784,13 +784,13 @@ export default function HomePage() {
                 "Custom branding (soon)",
               ].map((feature, index) => (
                 <li key={index} className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" />
+                  <Check className="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" />
                   <span className="text-slate-300">{feature}</span>
                 </li>
               ))}
             </ul>
 
-            <button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 py-3 rounded-lg transition-all hover:scale-[1.02] font-medium">
+            <button className="w-full bg-gradient-to-r from-cyan-600 to-sky-600 hover:from-cyan-700 hover:to-sky-700 py-3 rounded-lg transition-all hover:scale-[1.02] font-medium">
               Start Free Trial
             </button>
 
@@ -838,7 +838,7 @@ export default function HomePage() {
                     <td className="px-6 py-4 text-center text-slate-400">
                       {row.free}
                     </td>
-                    <td className="px-6 py-4 text-center text-blue-400 font-semibold">
+                    <td className="px-6 py-4 text-center text-cyan-400 font-semibold">
                       {row.premium}
                     </td>
                   </tr>
@@ -933,7 +933,7 @@ export default function HomePage() {
             >
               <summary className="cursor-pointer font-semibold text-lg flex items-center justify-between">
                 {faq.q}
-                <span className="text-blue-400 group-open:rotate-180 transition-transform">
+                <span className="text-cyan-400 group-open:rotate-180 transition-transform">
                   ▼
                 </span>
               </summary>
@@ -948,7 +948,7 @@ export default function HomePage() {
 
           <a
             href="mailto:support@yoursite.com"
-            className="inline-block bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg font-medium transition-colors"
+            className="inline-block bg-cyan-600 hover:bg-cyan-700 px-6 py-3 rounded-lg font-medium transition-colors"
           >
             Contact Support
           </a>
@@ -961,7 +961,7 @@ export default function HomePage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-8">
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 bg-gradient-to-br from-cyan-500 to-sky-600 rounded-lg flex items-center justify-center">
                   <FileText className="w-5 h-5" />
                 </div>
                 <span className="text-xl font-bold font-mono">DocMerge</span>

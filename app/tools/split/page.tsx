@@ -132,7 +132,7 @@ export default function SplitPDFPage() {
       <header className="relative z-10 border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
           <Link href="/" className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+            <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center">
               <FileText className="w-6 h-6" />
             </div>
             <span className="text-2xl font-bold font-mono">DocMerge</span>
@@ -159,7 +159,7 @@ export default function SplitPDFPage() {
           </p>
         </div>
 
-        <div className="bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-2xl p-8 backdrop-blur-sm">
+        <div className="bg-gradient-to-br from-cyan-500/10 to-blue-500/10 border border-cyan-500/20 rounded-2xl p-8 backdrop-blur-sm">
           {!splitPdfUrl ? (
             <>
               {!file ? (
@@ -238,8 +238,8 @@ export default function SplitPDFPage() {
                       />
                     </div>
 
-                    <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-4">
-                      <p className="text-sm text-blue-300">
+                    <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-lg p-4">
+                      <p className="text-sm text-cyan-300">
                         📄 You'll extract{" "}
                         <strong>{endPage - startPage + 1}</strong> page(s) (from
                         page {startPage} to {endPage})

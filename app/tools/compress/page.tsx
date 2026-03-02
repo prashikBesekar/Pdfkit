@@ -118,14 +118,14 @@ export default function CompressPDFPage() {
         </Link>
 
         <div className="text-center mb-12">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl mb-4">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-sky-500 to-blue-500 rounded-2xl mb-4">
             <Minimize2 className="w-8 h-8" />
           </div>
           <h1 className="text-3xl sm:text-4xl font-bold mb-4">Compress PDF</h1>
           <p className="text-base sm:text-xl text-slate-400">Reduce PDF file size without losing quality</p>
         </div>
 
-        <div className="bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-2xl p-8 backdrop-blur-sm">
+        <div className="bg-gradient-to-br from-cyan-500/10 to-sky-500/10 border border-cyan-500/20 rounded-2xl p-8 backdrop-blur-sm">
           {!compressedPdfUrl ? (
             <>
               {!file ? (
@@ -210,7 +210,7 @@ export default function CompressPDFPage() {
               <div className="flex gap-4 justify-center">
                 <button
                   onClick={downloadCompressedPdf}
-                  className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 px-8 py-4 rounded-lg font-medium flex items-center gap-2 transition-all hover:scale-105"
+                  className="bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-700 hover:to-pink-700 px-8 py-4 rounded-lg font-medium flex items-center gap-2 transition-all hover:scale-105"
                 >
                   <Download className="w-5 h-5" />
                   Download Compressed PDF

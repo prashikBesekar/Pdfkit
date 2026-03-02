@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+
+.glow-card {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(14, 165, 233, 0.1) 100%);
+  border: 1px solid rgba(6, 182, 212, 0.2);
+  box-shadow: 0 0 30px rgba(6, 182, 212, 0.15);
+  transition: all 0.3s ease;
+}
+
+.glow-card:hover {
+  border-color: rgba(6, 182, 212, 0.4);
+  box-shadow: 0 0 50px rgba(6, 182, 212, 0.25);
+  transform: translateY(-2px);
+}
 /* Smooth scrolling for anchor links */
 html {
   scroll-behavior: smooth;
@@ -14,6 +27,7 @@ html {
   }
   
 }
+
 
 /* Mobile-friendly improvements */
 @media (max-width: 768px) {
