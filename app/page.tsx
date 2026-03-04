@@ -181,9 +181,11 @@ export default function HomePage() {
           </nav>
 
           {/* Desktop CTA Button */}
-          <button className="hidden md:block bg-cyan-600 hover:bg-cyan-700 px-6 py-2 rounded-lg text-sm font-medium transition">
+          <Link href="/login">
+          <button className="hidden md:block bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 px-6 py-2 rounded-lg text-sm font-medium transition shadow-lg shadow-cyan-500/30">
             Sign In
           </button>
+        </Link>
 
           {/* Mobile Menu Button */}
           <button
@@ -231,9 +233,11 @@ export default function HomePage() {
               >
                 💰 Pricing
               </a>
-              <button className="w-full bg-cyan-600 to-blue-600 hover:bg-cyan-700 hover:to-blue-700 px-4 py-3 rounded-lg text-sm font-medium transition">
+              <Link href="/login" className="w-full">
+              <button className="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 px-4 py-3 rounded-lg text-sm font-medium transition shadow-lg shadow-cyan-500/30">
                 Sign In
               </button>
+            </Link>
             </nav>
           </div>
         )}

@@ -1,114 +1,223 @@
-[00:00:04.741] Server  WARN    ⚠ Minimum recommended TypeScript version is v5.1.0, older versions can potentially be incompatible with Next.js. Detected: 4.9.5
-[00:00:05.538] Server  LOG     ✓ Ready in 4s
-[00:00:28.041] Server  WARN    ⚠ Cross origin request detected from 192.168.105.130 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+[00:00:02.910] Server  WARN    ⚠ Minimum recommended TypeScript version is v5.1.0, older versions can potentially be incompatible with Next.js. Detected: 4.9.5
+[00:00:03.526] Server  LOG     ✓ Ready in 2.3s
+[00:00:03.531] Server  WARN    ⚠ Cross origin request detected from 10.185.66.130 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
 Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
-[00:00:28.099] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:28.465] Browser LOG     📊 Homepage viewed at: 02/03/2026, 16:16:11
-[00:02:14.083] Server  LOG     ✓ Compiled in 3.8s
-[00:02:21.220] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:02:21.496] Browser LOG     📊 Homepage viewed at: 02/03/2026, 16:18:04
-[00:02:38.987] Server  LOG     ✓ Compiled in 301ms
-[00:03:44.724] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:03:44.980] Browser LOG     📊 Homepage viewed at: 02/03/2026, 16:19:28
-[00:04:17.276] Server  LOG     ✓ Compiled in 328ms
-[00:04:27.553] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:04:27.869] Browser LOG     📊 Homepage viewed at: 02/03/2026, 16:20:11
-[00:04:43.997] Server  LOG     ✓ Compiled in 286ms
-[00:04:57.714] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:04:58.052] Browser LOG     📊 Homepage viewed at: 02/03/2026, 16:20:41
-[00:23:53.581] Server  LOG     ✓ Compiled in 10s
-[00:25:40.262] Server  LOG     ✓ Compiled in 360ms
-[00:27:41.142] Server  LOG     ✓ Compiled in 344ms
-[00:28:12.676] Server  LOG     ✓ Compiled in 310ms
-[00:30:05.824] Server  LOG     ✓ Compiled in 336ms
-[00:31:56.484] Server  LOG     ✓ Compiled in 975ms
-[00:32:12.712] Server  LOG     ✓ Compiled in 625ms
-[00:43:24.272] Server  LOG     ✓ Compiled in 5.6s
-[00:43:24.335] Server  WARN    ⚠ ./tailwind.config.js:1:1
-Module not found: Can't resolve 'tailwindcars'
-> 1 | import { Config } from 'tailwindcars'
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 |
-  3 | const config =  {
-  4 |
+[00:00:06.667] Server  LOG     ○ Compiling /signup ...
+[00:00:06.964] Server  ERROR   ⨯ ./app/signup/page.tsx:7:1
+Module not found: Can't resolve '@/lib/supabase'
+   5 | import { useRouter } from 'next/navigation'
+   6 | import { Mail, Lock, User, Eye, EyeOff, Loader2, FileText, Github } from 'lucide-react'
+>  7 | import { signUp, signInWithGoogle, signInWithGithub } from '@/lib/supabase'
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | export default function SignUpPage() {
+  10 |   const router = useRouter()
 
 
+
+Import traces:
+  Client Component Browser:
+    ./app/signup/page.tsx [Client Component Browser]
+    ./app/signup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/signup/page.tsx [Client Component SSR]
+    ./app/signup/page.tsx [Server Component]
 
 https://nextjs.org/docs/messages/module-not-found
 
 
-[00:43:38.134] Server  LOG     ✓ Compiled in 9.2s
-[00:43:41.062] Browser ERROR   ./app/globals.css
-Error evaluating Node.js code
-SyntaxError: Unexpected token, expected ";" (1:8)
-    [at unexpected (/Users/prashik06/pdfkit/pdfkit/node_modules/sucrase/dist/parser/traverser/util.js:99:15)]
-    [at semicolon (/Users/prashik06/pdfkit/pdfkit/node_modules/sucrase/dist/parser/traverser/util.js:77:5)]
-    [at tsParseIdentifierStatement (/Users/prashik06/pdfkit/pdfkit/node_modules/sucrase/dist/parser/plugins/typescript.js:1473:21)]
-    [at parseIdentifierStatement (/Users/prashik06/pdfkit/pdfkit/node_modules/sucrase/dist/parser/traverser/statement.js:559:44)]
-    [at parseStatementContent (/Users/prashik06/pdfkit/pdfkit/node_modules/sucrase/dist/parser/traverser/statement.js:258:5)]
-    [at parseStatement (/Users/prashik06/pdfkit/pdfkit/node_modules/sucrase/dist/parser/traverser/statement.js:116:3)]
-    [at parseBlockBody (/Users/prashik06/pdfkit/pdfkit/node_modules/sucrase/dist/parser/traverser/statement.js:586:5)]
-    [at parseTopLevel (/Users/prashik06/pdfkit/pdfkit/node_modules/sucrase/dist/parser/traverser/statement.js:92:3)]
-    [at parseFile (/Users/prashik06/pdfkit/pdfkit/node_modules/sucrase/dist/parser/traverser/index.js:17:35)]
-    [at parse (/Users/prashik06/pdfkit/pdfkit/node_modules/sucrase/dist/parser/index.js:26:35)]
+[00:00:08.273] Browser ERROR   uncaughtError: Error: ./app/signup/page.tsx:7:1
+Module not found: Can't resolve '@/lib/supabase'
+   5 | import { useRouter } from 'next/navigation'
+   6 | import { Mail, Lock, User, Eye, EyeOff, Loader2, FileText, Github } from 'lucide-react'
+>  7 | import { signUp, signInWithGoogle, signInWithGithub } from '@/lib/supabase'
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | export default function SignUpPage() {
+  10 |   const router = useRouter()
 
-Import trace:
+
+
+Import traces:
   Client Component Browser:
-    ./app/globals.css [Client Component Browser]
-    ./app/layout.tsx [Server Component]
-[00:45:59.100] Server  LOG     ✓ Compiled in 711ms
-[02:12:37.019] Server  LOG     ✓ Compiled in 969ms
-[02:13:25.346] Server  LOG     ✓ Compiled in 246ms
-[02:15:49.621] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[02:15:50.090] Browser LOG     📊 Compress PDF page viewed at: 02/03/2026, 18:31:33
-[02:15:51.588] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[02:15:51.588] Browser LOG     📊 Homepage viewed at: 02/03/2026, 18:31:34
-[02:15:51.588] Browser LOG     📊 Homepage viewed at: 02/03/2026, 18:31:34
-[02:15:57.935] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[02:15:58.146] Browser LOG     📊 Split PDF page viewed at: 02/03/2026, 18:31:41
-[02:15:59.870] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[02:15:59.870] Browser LOG     📊 Homepage viewed at: 02/03/2026, 18:31:43
-[02:15:59.870] Browser LOG     📊 Homepage viewed at: 02/03/2026, 18:31:43
-[02:20:08.721] Server  LOG     ✓ Compiled in 290ms
-[02:20:34.902] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[02:20:35.251] Browser LOG     📊 Homepage viewed at: 02/03/2026, 18:36:18
-[02:25:48.690] Server  LOG     ✓ Compiled in 343ms
-[02:28:33.956] Server  LOG     ✓ Compiled in 266ms
-[02:28:43.159] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[02:28:43.470] Browser LOG     📊 Homepage viewed at: 02/03/2026, 18:44:27
-[02:36:14.683] Server  LOG     ✓ Compiled in 359ms
-[02:46:42.573] Server  LOG     ✓ Compiled in 264ms
-[02:49:17.564] Server  LOG     ✓ Compiled in 261ms
-[02:52:48.792] Server  LOG     ✓ Compiled in 881ms
-[02:54:59.162] Server  LOG     ✓ Compiled in 351ms
-[03:03:48.914] Server  LOG     ✓ Compiled in 497ms
-[03:04:43.517] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[03:04:43.715] Browser LOG     📊 Compress PDF page viewed at: 02/03/2026, 19:20:27
-[03:04:46.417] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[03:04:46.417] Browser LOG     📊 Homepage viewed at: 02/03/2026, 19:20:30
-[03:04:46.417] Browser LOG     📊 Homepage viewed at: 02/03/2026, 19:20:30
-[03:04:48.401] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[03:04:48.613] Browser LOG     📊 Split PDF page viewed at: 02/03/2026, 19:20:32
-[03:04:49.965] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[03:04:49.965] Browser LOG     📊 Homepage viewed at: 02/03/2026, 19:20:33
-[03:04:49.966] Browser LOG     📊 Homepage viewed at: 02/03/2026, 19:20:33
-[03:12:04.247] Server  LOG     ✓ Compiled in 307ms
-[03:18:18.175] Server  LOG     ✓ Compiled in 394ms
-[03:18:27.078] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[03:18:27.359] Browser LOG     📊 Compress PDF page viewed at: 02/03/2026, 19:34:11
-[03:18:50.859] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[03:18:50.859] Browser LOG     📊 Homepage viewed at: 02/03/2026, 19:34:34
-[03:18:50.859] Browser LOG     📊 Homepage viewed at: 02/03/2026, 19:34:34
-[03:18:53.589] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[03:18:53.801] Browser LOG     📊 Split PDF page viewed at: 02/03/2026, 19:34:37
-[03:19:02.198] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[03:19:02.198] Browser LOG     📊 Homepage viewed at: 02/03/2026, 19:34:45
-[03:19:02.198] Browser LOG     📊 Homepage viewed at: 02/03/2026, 19:34:45
-[03:28:06.426] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[03:28:06.726] Browser LOG     📊 Compress PDF page viewed at: 02/03/2026, 19:43:50
-[03:28:23.887] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[03:28:23.887] Browser LOG     📊 Homepage viewed at: 02/03/2026, 19:44:07
-[03:28:23.887] Browser LOG     📊 Homepage viewed at: 02/03/2026, 19:44:07
-[03:41:20.481] Server  LOG     ✓ Compiled in 775ms
-[03:42:28.696] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[03:42:28.983] Browser LOG     📊 Homepage viewed at: 02/03/2026, 19:58:12
+    ./app/signup/page.tsx [Client Component Browser]
+    ./app/signup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/signup/page.tsx [Client Component SSR]
+    ./app/signup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:00:08.859] Browser ERROR   ./app/signup/page.tsx:7:1
+Module not found: Can't resolve '@/lib/supabase'
+   5 | import { useRouter } from 'next/navigation'
+   6 | import { Mail, Lock, User, Eye, EyeOff, Loader2, FileText, Github } from 'lucide-react'
+>  7 | import { signUp, signInWithGoogle, signInWithGithub } from '@/lib/supabase'
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | export default function SignUpPage() {
+  10 |   const router = useRouter()
+
+Import traces:
+  Client Component Browser:
+    ./app/signup/page.tsx [Client Component Browser]
+    ./app/signup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/signup/page.tsx [Client Component SSR]
+    ./app/signup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:00:08.859] Browser ERROR   ./app/signup/page.tsx:7:1
+Module not found: Can't resolve '@/lib/supabase'
+   5 | import { useRouter } from 'next/navigation'
+   6 | import { Mail, Lock, User, Eye, EyeOff, Loader2, FileText, Github } from 'lucide-react'
+>  7 | import { signUp, signInWithGoogle, signInWithGithub } from '@/lib/supabase'
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | export default function SignUpPage() {
+  10 |   const router = useRouter()
+
+Import traces:
+  Client Component Browser:
+    ./app/signup/page.tsx [Client Component Browser]
+    ./app/signup/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/signup/page.tsx [Client Component SSR]
+    ./app/signup/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:01:09.227] Server  LOG     ✓ Compiled in 763ms
+[00:01:12.163] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:43.342] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:58.770] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:01.642] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:07.362] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:07.632] Browser LOG     📊 Homepage viewed at: 04/03/2026, 21:36:20
+[00:02:12.481] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:12.671] Browser LOG     📊 Compress PDF page viewed at: 04/03/2026, 21:36:25
+[00:02:13.884] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:02:13.884] Browser LOG     📊 Homepage viewed at: 04/03/2026, 21:36:26
+[00:02:13.884] Browser LOG     📊 Homepage viewed at: 04/03/2026, 21:36:26
+[00:02:15.583] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:15.670] Browser LOG     📊 Split PDF page viewed at: 04/03/2026, 21:36:28
+[00:02:17.561] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:02:17.561] Browser LOG     📊 Homepage viewed at: 04/03/2026, 21:36:30
+[00:02:17.561] Browser LOG     📊 Homepage viewed at: 04/03/2026, 21:36:30
+[00:04:34.991] Server  LOG     ✓ Compiled in 604ms
+[00:10:06.827] Server  LOG     ✓ Compiled in 695ms
+[00:10:56.249] Server  LOG     ✓ Compiled in 617ms
+[00:11:39.170] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:11:39.616] Browser LOG     📊 Homepage viewed at: 04/03/2026, 21:45:52
+[00:11:41.972] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:12:01.295] Browser WARN    WebCrypto API is not supported. Code challenge method will default to use plain instead of sha256.
+[00:12:10.565] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:12:12.471] Browser WARN    WebCrypto API is not supported. Code challenge method will default to use plain instead of sha256.
+[00:12:16.572] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:12:19.641] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:13:02.910] Browser WARN    WebCrypto API is not supported. Code challenge method will default to use plain instead of sha256.
+[00:13:49.880] Server  ERROR   ⨯ Error: The default export is not a React Component in "/dashboard/page"
+[00:13:50.362] Server  ERROR   ⨯ Error: The default export is not a React Component in "/dashboard/page"
+[00:13:51.452] Server  ERROR   ⨯ Error: The default export is not a React Component in "/dashboard/page"
+[00:13:52.112] Server  ERROR   ⨯ Error: The default export is not a React Component in "/dashboard/page"
+[00:13:52.574] Browser ERROR   uncaughtError: Error: The default export is not a React Component in "/dashboard/page"
+[00:17:39.509] Server  ERROR   ⨯ ./app
+An issue occurred while preparing your Next.js app
+Conflicting route and page at /auth/callback: route at /auth/callback/route and page at /auth/callback/page
+
+
+[00:17:40.980] Browser ERROR   uncaughtError: Error: ./app
+An issue occurred while preparing your Next.js app
+Conflicting route and page at /auth/callback: route at /auth/callback/route and page at /auth/callback/page
+
+
+[00:17:41.230] Browser ERROR   ./app
+An issue occurred while preparing your Next.js app
+Conflicting route and page at /auth/callback: route at /auth/callback/route and page at /auth/callback/page
+[00:17:41.230] Browser ERROR   ./app
+An issue occurred while preparing your Next.js app
+Conflicting route and page at /auth/callback: route at /auth/callback/route and page at /auth/callback/page
+[00:17:41.230] Browser ERROR   ./app
+An issue occurred while preparing your Next.js app
+Conflicting route and page at /auth/callback: route at /auth/callback/route and page at /auth/callback/page
+[00:17:41.230] Browser ERROR   ./app
+An issue occurred while preparing your Next.js app
+Conflicting route and page at /auth/callback: route at /auth/callback/route and page at /auth/callback/page
+[00:17:41.230] Browser ERROR   ./app
+An issue occurred while preparing your Next.js app
+Conflicting route and page at /auth/callback: route at /auth/callback/route and page at /auth/callback/page
+[00:17:41.230] Browser ERROR   ./app
+An issue occurred while preparing your Next.js app
+Conflicting route and page at /auth/callback: route at /auth/callback/route and page at /auth/callback/page
+[00:17:41.230] Browser ERROR   ./app
+An issue occurred while preparing your Next.js app
+Conflicting route and page at /auth/callback: route at /auth/callback/route and page at /auth/callback/page
+[00:17:41.468] Browser ERROR   ./app
+An issue occurred while preparing your Next.js app
+Conflicting route and page at /auth/callback: route at /auth/callback/route and page at /auth/callback/page
+[00:18:08.852] Browser ERROR   ./app
+An issue occurred while preparing your Next.js app
+Conflicting route and page at /auth/callback: route at /auth/callback/route and page at /auth/callback/page
+[00:18:08.852] Browser ERROR   ./app
+An issue occurred while preparing your Next.js app
+Conflicting route and page at /auth/callback: route at /auth/callback/route and page at /auth/callback/page
+[00:18:10.937] Browser ERROR   ./app
+An issue occurred while preparing your Next.js app
+Conflicting route and page at /auth/callback: route at /auth/callback/route and page at /auth/callback/page
+[00:18:22.881] Browser ERROR   ./app
+An issue occurred while preparing your Next.js app
+Conflicting route and page at /auth/callback: route at /auth/callback/route and page at /auth/callback/page
+[00:18:40.268] Browser ERROR   ./app
+An issue occurred while preparing your Next.js app
+Conflicting route and page at /auth/callback: route at /auth/callback/route and page at /auth/callback/page
+[00:18:40.268] Browser ERROR   ./app
+An issue occurred while preparing your Next.js app
+Conflicting route and page at /auth/callback: route at /auth/callback/route and page at /auth/callback/page
+[00:18:44.265] Server  ERROR   ⨯ ./app
+An issue occurred while preparing your Next.js app
+Conflicting route and page at /auth/callback: route at /auth/callback/route and page at /auth/callback/page
+
+
+[00:18:44.762] Browser ERROR   uncaughtError: Error: ./app
+An issue occurred while preparing your Next.js app
+Conflicting route and page at /auth/callback: route at /auth/callback/route and page at /auth/callback/page
+
+
+[00:18:44.921] Browser ERROR   ./app
+An issue occurred while preparing your Next.js app
+Conflicting route and page at /auth/callback: route at /auth/callback/route and page at /auth/callback/page
+[00:18:44.922] Browser ERROR   ./app
+An issue occurred while preparing your Next.js app
+Conflicting route and page at /auth/callback: route at /auth/callback/route and page at /auth/callback/page
+[00:18:44.922] Browser ERROR   ./app
+An issue occurred while preparing your Next.js app
+Conflicting route and page at /auth/callback: route at /auth/callback/route and page at /auth/callback/page
+[00:18:44.922] Browser ERROR   ./app
+An issue occurred while preparing your Next.js app
+Conflicting route and page at /auth/callback: route at /auth/callback/route and page at /auth/callback/page
+[00:18:44.922] Browser ERROR   ./app
+An issue occurred while preparing your Next.js app
+Conflicting route and page at /auth/callback: route at /auth/callback/route and page at /auth/callback/page
+[00:18:44.922] Browser ERROR   ./app
+An issue occurred while preparing your Next.js app
+Conflicting route and page at /auth/callback: route at /auth/callback/route and page at /auth/callback/page
+[00:18:44.922] Browser ERROR   ./app
+An issue occurred while preparing your Next.js app
+Conflicting route and page at /auth/callback: route at /auth/callback/route and page at /auth/callback/page
+[00:18:44.922] Browser ERROR   ./app
+An issue occurred while preparing your Next.js app
+Conflicting route and page at /auth/callback: route at /auth/callback/route and page at /auth/callback/page
+[00:19:42.594] Server  LOG     ✓ Compiled in 739ms
+[00:19:44.586] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:20:07.674] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:20:07.674] Browser LOG     📊 Homepage viewed at: 04/03/2026, 21:54:20
+[00:20:07.674] Browser LOG     📊 Homepage viewed at: 04/03/2026, 21:54:20
+[00:20:21.428] Browser LOG     📊 Compress PDF page viewed at: 04/03/2026, 21:54:34
+[00:20:21.428] Browser LOG     📊 Compress PDF page viewed at: 04/03/2026, 21:54:34
+[00:20:49.277] Browser LOG     📊 Homepage viewed at: 04/03/2026, 21:55:02
+[00:20:49.277] Browser LOG     📊 Homepage viewed at: 04/03/2026, 21:55:02
+[00:21:29.110] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
