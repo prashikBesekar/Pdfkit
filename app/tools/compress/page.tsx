@@ -1,6 +1,8 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
+import { getCurrentUser } from '@/lib/supabase'
+import { canUserPerformOperation, incrementUserOperation } from '@/lib/usage'
 import { Upload, Download, Check, Minimize2, ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 
@@ -27,42 +29,58 @@ export default function CompressPDFPage() {
   }
 
   const compressPDF = async () => {
-    if (!file) return
+  if (!file) return
 
-    setCompressing(true)
-    
-    try {
-      const { PDFDocument } = await import('pdf-lib')
-      
-      const arrayBuffer = await file.arrayBuffer()
-      const pdfDoc = await PDFDocument.load(arrayBuffer)
-      
-      // Remove metadata to reduce size
-      pdfDoc.setTitle('')
-      pdfDoc.setAuthor('')
-      pdfDoc.setSubject('')
-      pdfDoc.setKeywords([])
-      pdfDoc.setProducer('')
-      pdfDoc.setCreator('')
-      
-      const compressedPdfBytes = await pdfDoc.save({
-        useObjectStreams: true,
-        addDefaultPage: false,
-      })
-      
-      setCompressedSize(compressedPdfBytes.length)
-      
-      const blob = new Blob([compressedPdfBytes], { type: 'application/pdf' })
-      const url = URL.createObjectURL(blob)
-      
-      setCompressedPdfUrl(url)
-    } catch (error) {
-      console.error('Error compressing PDF:', error)
-      alert('Error compressing PDF. Please try again.')
-    } finally {
-      setCompressing(false)
+  // Check authentication
+  const { user } = await getCurrentUser()
+
+  if (user) {
+    const { canPerform, remaining } = await canUserPerformOperation(user.id)
+
+    if (!canPerform) {
+      alert(`Daily limit reached! You have 0 operations remaining today. Upgrade to Premium for unlimited access.`)
+      return
     }
   }
+
+  setCompressing(true)
+  
+  try {
+    const { PDFDocument } = await import('pdf-lib')
+    
+    const arrayBuffer = await file.arrayBuffer()
+    const pdfDoc = await PDFDocument.load(arrayBuffer)
+    
+    pdfDoc.setTitle('')
+    pdfDoc.setAuthor('')
+    pdfDoc.setSubject('')
+    pdfDoc.setKeywords([])
+    pdfDoc.setProducer('')
+    pdfDoc.setCreator('')
+    
+    const compressedPdfBytes = await pdfDoc.save({
+      useObjectStreams: true,
+      addDefaultPage: false,
+    })
+    
+    setCompressedSize(compressedPdfBytes.length)
+    
+    const blob = new Blob([compressedPdfBytes], { type: 'application/pdf' })
+    const url = URL.createObjectURL(blob)
+    
+    setCompressedPdfUrl(url)
+
+    // Increment usage if logged in
+    if (user) {
+      await incrementUserOperation(user.id)
+    }
+  } catch (error) {
+    console.error('Error compressing PDF:', error)
+    alert('Error compressing PDF. Please try again.')
+  } finally {
+    setCompressing(false)
+  }
+}
 
   const downloadCompressedPdf = () => {
   if (!compressedPdfUrl) return

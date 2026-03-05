@@ -1,6 +1,10 @@
 "use client";
 
 import React, { useState, useCallback, useEffect } from "react";
+import { getCurrentUser } from '../lib/supabase'
+import { canUserPerformOperation, incrementUserOperation } from '../lib/usage'
+import UpgradeButton from '../app/components/UpgradeButton'
+
 import {
   Upload,
   FileText,
@@ -62,42 +66,61 @@ export default function HomePage() {
   };
 
   const mergePDFs = async () => {
-    if (files.length < 2) {
-      alert("Please add at least 2 PDF files to merge");
-      return;
+  if (files.length < 2) {
+    alert('Please add at least 2 PDF files to merge')
+    return
+  }
+
+  // Check authentication
+  const { user } = await getCurrentUser()
+
+  if (user) {
+    // User is logged in - check usage limits
+    const { canPerform, remaining, isPremium } = await canUserPerformOperation(user.id)
+
+   if (!canPerform) {
+  const upgrade = window.confirm(
+    `Daily limit reached! You have 0 operations remaining today.\n\nUpgrade to Premium for unlimited access?\n\nClick OK to upgrade now, or Cancel to wait until tomorrow.`
+  )
+  
+  if (upgrade) {
+    window.location.href = '/#pricing'
+  }
+  return
+}
+  }
+
+  setMerging(true)
+  
+  try {
+    const { PDFDocument } = await import('pdf-lib')
+    
+    const mergedPdf = await PDFDocument.create()
+    
+    for (const file of files) {
+      const arrayBuffer = await file.arrayBuffer()
+      const pdf = await PDFDocument.load(arrayBuffer)
+      const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices())
+      copiedPages.forEach((page) => mergedPdf.addPage(page))
     }
+    
+    const mergedPdfBytes = await mergedPdf.save()
+    const blob = new Blob([mergedPdfBytes], { type: 'application/pdf' })
+    const url = URL.createObjectURL(blob)
+    
+    setMergedPdfUrl(url)
 
-    setMerging(true);
-
-    try {
-      // Import pdf-lib dynamically
-      const { PDFDocument } = await import("pdf-lib");
-
-      const mergedPdf = await PDFDocument.create();
-
-      for (const file of files) {
-        const arrayBuffer = await file.arrayBuffer();
-        const pdf = await PDFDocument.load(arrayBuffer);
-        const copiedPages = await mergedPdf.copyPages(
-          pdf,
-          pdf.getPageIndices(),
-        );
-        copiedPages.forEach((page) => mergedPdf.addPage(page));
-      }
-
-      const mergedPdfBytes = await mergedPdf.save();
-      const blob = new Blob([mergedPdfBytes], { type: "application/pdf" });
-      const url = URL.createObjectURL(blob);
-
-      setMergedPdfUrl(url);
-    } catch (error) {
-      console.error("Error merging PDFs:", error);
-      alert("Error merging PDFs. Please try again.");
-    } finally {
-      setMerging(false);
+    // Increment usage count if user is logged in
+    if (user) {
+      await incrementUserOperation(user.id)
     }
-  };
-
+  } catch (error) {
+    console.error('Error merging PDFs:', error)
+    alert('Error merging PDFs. Please try again.')
+  } finally {
+    setMerging(false)
+  }
+}
   const downloadMergedPdf = () => {
     if (!mergedPdfUrl) return;
 
@@ -768,7 +791,7 @@ export default function HomePage() {
 
             <div className="mb-8">
               <div className="flex items-baseline gap-2">
-                <span className="text-5xl font-bold">$9</span>
+                <span className="text-5xl font-bold">$6</span>
                 <span className="text-slate-500">/month</span>
               </div>
               <p className="text-sm text-cyan-400 mt-2">
@@ -794,9 +817,7 @@ export default function HomePage() {
               ))}
             </ul>
 
-            <button className="w-full bg-gradient-to-r from-cyan-600 to-sky-600 hover:from-cyan-700 hover:to-sky-700 py-3 rounded-lg transition-all hover:scale-[1.02] font-medium">
-              Start Free Trial
-            </button>
+            <UpgradeButton text="Start Free Trial" className="w-full" />
 
             <p className="text-center text-xs text-slate-500 mt-4">
               7-day free trial • No credit card required

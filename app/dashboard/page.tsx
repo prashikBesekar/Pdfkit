@@ -1,36 +1,55 @@
-'use client'
+"use client";
 
-import React, { useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
-import Link from 'next/link'
-import { FileText, LogOut, User, Settings, CreditCard, Activity, Zap, Scissors } from 'lucide-react'
-import { getCurrentUser, signOut } from '../../lib/supabase'
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import {
+  FileText,
+  LogOut,
+  User,
+  Settings,
+  CreditCard,
+  Activity,
+  Zap,
+  Scissors,
+  Check
+} from "lucide-react";
+import { getCurrentUser, signOut } from "../../lib/supabase";
+import { getUserUsageStats } from "../../lib/usage";
+import UpgradeButton from "../components/UpgradeButton";
+
 
 export default function DashboardPage() {
-  const router = useRouter()
-  const [user, setUser] = useState<any>(null)
-  const [loading, setLoading] = useState(true)
+  const router = useRouter();
+  const [user, setUser] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+  const [usageStats, setUsageStats] = useState<any>(null);
 
   useEffect(() => {
     const checkAuth = async () => {
-      const { user, error } = await getCurrentUser()
-      
+      const { user, error } = await getCurrentUser();
+
       if (error || !user) {
-        router.push('/login')
-        return
+        router.push("/login");
+        return;
       }
 
-      setUser(user)
-      setLoading(false)
-    }
+      setUser(user);
 
-    checkAuth()
-  }, [router])
+      // Get usage stats
+      const stats = await getUserUsageStats(user.id);
+      setUsageStats(stats);
+
+      setLoading(false);
+    };
+
+    checkAuth();
+  }, [router]);
 
   const handleSignOut = async () => {
-    await signOut()
-    router.push('/')
-  }
+    await signOut();
+    router.push("/");
+  };
 
   if (loading) {
     return (
@@ -40,7 +59,7 @@ export default function DashboardPage() {
           <p className="text-slate-400">Loading...</p>
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -61,7 +80,9 @@ export default function DashboardPage() {
                 <User className="w-5 h-5" />
               </div>
               <div className="hidden md:block">
-                <p className="text-sm font-medium">{user?.user_metadata?.full_name || 'User'}</p>
+                <p className="text-sm font-medium">
+                  {user?.user_metadata?.full_name || "User"}
+                </p>
                 <p className="text-xs text-slate-400">{user?.email}</p>
               </div>
             </div>
@@ -78,10 +99,32 @@ export default function DashboardPage() {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 py-12">
+        {/* Success Message */}
+{typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('success') === 'true' && (
+  <div className="bg-green-500/10 border border-green-500/20 rounded-xl p-6 mb-8 animate-slide-in">
+    <div className="flex items-center gap-3">
+      <div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center">
+        <Check className="w-6 h-6 text-green-400" />
+      </div>
+      <div>
+        <h3 className="text-lg font-bold text-green-400">Welcome to Premium! 🎉</h3>
+        <p className="text-slate-400">You now have unlimited access to all features!</p>
+      </div>
+    </div>
+  </div>
+)}
+
+{/* Canceled Message */}
+{typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('canceled') === 'true' && (
+  <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-xl p-6 mb-8">
+    <p className="text-yellow-400">Payment canceled. You can upgrade anytime!</p>
+  </div>
+)}
         {/* Welcome Section */}
         <div className="mb-12">
           <h1 className="text-4xl font-bold mb-2">
-            Welcome back, {user?.user_metadata?.full_name?.split(' ')[0] || 'User'}! 👋
+            Welcome back,{" "}
+            {user?.user_metadata?.full_name?.split(" ")[0] || "User"}! 👋
           </h1>
           <p className="text-slate-400 text-lg">Here's your account overview</p>
         </div>
@@ -93,7 +136,9 @@ export default function DashboardPage() {
               <div className="w-12 h-12 bg-cyan-500/20 rounded-lg flex items-center justify-center">
                 <Activity className="w-6 h-6 text-cyan-400" />
               </div>
-              <span className="text-2xl font-bold">0</span>
+              <span className="text-2xl font-bold">
+                {usageStats?.operationCount || 0}
+              </span>{" "}
             </div>
             <h3 className="text-lg font-semibold mb-1">PDF Operations</h3>
             <p className="text-sm text-slate-400">Total files processed</p>
@@ -104,10 +149,18 @@ export default function DashboardPage() {
               <div className="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center">
                 <Zap className="w-6 h-6 text-green-400" />
               </div>
-              <span className="text-2xl font-bold">5</span>
+              <span className="text-2xl font-bold">
+                {usageStats?.isPremium ? "∞" : usageStats?.remaining || 5}
+              </span>
             </div>
-            <h3 className="text-lg font-semibold mb-1">Daily Limit</h3>
-            <p className="text-sm text-slate-400">Operations remaining today</p>
+            <h3 className="text-lg font-semibold mb-1">
+              {usageStats?.isPremium ? "Unlimited" : "Daily Limit"}
+            </h3>
+            <p className="text-sm text-slate-400">
+              {usageStats?.isPremium
+                ? "Premium member"
+                : "Operations remaining today"}
+            </p>
           </div>
 
           <div className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-xl p-6">
@@ -115,10 +168,14 @@ export default function DashboardPage() {
               <div className="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center">
                 <CreditCard className="w-6 h-6 text-purple-400" />
               </div>
-              <span className="text-lg font-bold">Free</span>
+              <span className="text-lg font-bold">
+                {usageStats?.isPremium ? "Premium" : "Free"}
+              </span>{" "}
             </div>
             <h3 className="text-lg font-semibold mb-1">Current Plan</h3>
-            <p className="text-sm text-slate-400">Upgrade for unlimited access</p>
+            <p className="text-sm text-slate-400">
+              Upgrade for unlimited access
+            </p>
           </div>
         </div>
 
@@ -163,10 +220,13 @@ export default function DashboardPage() {
 
         {/* Upgrade Banner */}
         <div className="bg-gradient-to-r from-cyan-600 to-blue-600 rounded-xl p-8 text-center mb-12">
-          <h2 className="text-3xl font-bold mb-3">Ready for Unlimited Access?</h2>
+          <h2 className="text-3xl font-bold mb-3">
+            Ready for Unlimited Access?
+          </h2>
           <p className="text-lg mb-6 opacity-90">
             Upgrade to Premium and unlock all features with no limits
           </p>
+            <UpgradeButton className="inline-block" />
           <Link
             href="/#pricing"
             className="inline-block bg-white text-gray-900 hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-colors"
@@ -181,10 +241,12 @@ export default function DashboardPage() {
           <div className="bg-slate-800/30 border border-slate-700 rounded-xl p-8 text-center">
             <Activity className="w-12 h-12 text-slate-600 mx-auto mb-4" />
             <p className="text-slate-400 mb-2">No recent activity</p>
-            <p className="text-sm text-slate-500">Start using PDF tools to see your history here</p>
+            <p className="text-sm text-slate-500">
+              Start using PDF tools to see your history here
+            </p>
           </div>
         </div>
       </main>
     </div>
-  )
+  );
 }

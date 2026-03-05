@@ -1,6 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { getCurrentUser } from '../../../lib/supabase'
+import { canUserPerformOperation, incrementUserOperation } from '../../../lib/usage'
+
 import Link from "next/link";
 import {
   Upload,
@@ -46,43 +49,64 @@ export default function SplitPDFPage() {
   };
 
   const splitPDF = async () => {
-    if (!file) return;
+  if (!file) return
 
-    // Validation
-    if (startPage < 1 || endPage > pageCount || startPage > endPage) {
-      alert(`Please enter valid page numbers (1-${pageCount})`);
-      return;
+  // Check authentication
+  const { user } = await getCurrentUser()
+
+  if (user) {
+    const { canPerform, remaining } = await canUserPerformOperation(user.id)
+
+   if (!canPerform) {
+  const upgrade = window.confirm(
+    `Daily limit reached! You have 0 operations remaining today.\n\nUpgrade to Premium for unlimited access?\n\nClick OK to upgrade now, or Cancel to wait until tomorrow.`
+  )
+  
+  if (upgrade) {
+    window.location.href = '/#pricing'
+  }
+  return
+}
+
+  setSplitPdfUrl(null);
+  setSplitting(true);
+
+  try {
+    const { PDFDocument } = await import('pdf-lib')
+    
+    const arrayBuffer = await file.arrayBuffer()
+    const pdfDoc = await PDFDocument.load(arrayBuffer)
+    
+    pdfDoc.setTitle('')
+    pdfDoc.setAuthor('')
+    pdfDoc.setSubject('')
+    pdfDoc.setKeywords([])
+    pdfDoc.setProducer('')
+    pdfDoc.setCreator('')
+
+    const splitPdfBytes = await pdfDoc.save({
+      useObjectStreams: true,
+      addDefaultPage: false,
+    })
+
+    setSplitPdfSize(splitPdfBytes.length)
+
+    const blob = new Blob([splitPdfBytes], { type: 'application/pdf' })
+    const url = URL.createObjectURL(blob)
+
+    setSplitPdfUrl(url)
+
+    // Increment usage if logged in
+    if (user) {
+      await incrementUserOperation(user.id)
     }
-
-    setSplitting(true);
-
-    try {
-      const { PDFDocument } = await import("pdf-lib");
-
-      const arrayBuffer = await file.arrayBuffer();
-      const pdfDoc = await PDFDocument.load(arrayBuffer);
-
-      // Create new PDF with selected pages
-      const newPdf = await PDFDocument.create();
-
-      // Copy pages (convert to 0-based index)
-      for (let i = startPage - 1; i < endPage; i++) {
-        const [copiedPage] = await newPdf.copyPages(pdfDoc, [i]);
-        newPdf.addPage(copiedPage);
-      }
-
-      const pdfBytes = await newPdf.save();
-      const blob = new Blob([pdfBytes], { type: "application/pdf" });
-      const url = URL.createObjectURL(blob);
-
-      setSplitPdfUrl(url);
-    } catch (error) {
-      console.error("Error splitting PDF:", error);
-      alert("Error splitting PDF. Please try again.");
-    } finally {
-      setSplitting(false);
-    }
-  };
+  } catch (error) {
+    console.error('Error splitting PDF:', error)
+    alert('Error splitting PDF. Please try again.')
+  } finally {
+    setSplitting(false)
+  }
+}
 
   const downloadSplitPdf = () => {
     if (!splitPdfUrl) return;
@@ -321,4 +345,5 @@ export default function SplitPDFPage() {
       </div>
     </div>
   );
+}
 }
