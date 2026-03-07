@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { getCurrentUser } from '../../../lib/supabase'
+import { getCurrentUser, signOut } from '../../../lib/supabase'
 import { canUserPerformOperation, incrementUserOperation } from '../../../lib/usage'
 
 import Link from "next/link";
@@ -12,6 +12,8 @@ import {
   Scissors,
   ArrowLeft,
   FileText,
+  User,
+  LogOut
 } from "lucide-react";
 
 export default function SplitPDFPage() {
@@ -26,6 +28,22 @@ export default function SplitPDFPage() {
   const [pageCount, setPageCount] = useState(0);
   const [startPage, setStartPage] = useState(1);
   const [endPage, setEndPage] = useState(1);
+  const [user, setUser] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+  const checkAuth = async () => {
+    const { user } = await getCurrentUser()
+    setUser(user)
+    setLoading(false)
+  }
+  checkAuth()
+}, [])
+
+const handleSignOut = async () => {
+  await signOut()
+  window.location.href = '/'
+}
 
   const handleFileInput = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -49,64 +67,66 @@ export default function SplitPDFPage() {
   };
 
   const splitPDF = async () => {
-  if (!file) return
+  if (!file) return;
 
-  // Check authentication
-  const { user } = await getCurrentUser()
+  // Validation
+  if (startPage < 1 || endPage > pageCount || startPage > endPage) {
+    alert(`Please enter valid page numbers (1-${pageCount})`);
+    return;
+  }
+
+  // Check authentication and usage limits
+  const { user } = await getCurrentUser();
 
   if (user) {
-    const { canPerform, remaining } = await canUserPerformOperation(user.id)
+    // User is logged in - check usage limits
+    const { canPerform, remaining, isPremium } = await canUserPerformOperation(user.id);
 
-   if (!canPerform) {
-  const upgrade = window.confirm(
-    `Daily limit reached! You have 0 operations remaining today.\n\nUpgrade to Premium for unlimited access?\n\nClick OK to upgrade now, or Cancel to wait until tomorrow.`
-  )
-  
-  if (upgrade) {
-    window.location.href = '/#pricing'
+    if (!canPerform) {
+      const upgrade = window.confirm(
+        `Daily limit reached! You have 0 operations remaining today.\n\nUpgrade to Premium for unlimited access?\n\nClick OK to upgrade now, or Cancel to wait until tomorrow.`
+      );
+      
+      if (upgrade) {
+        window.location.href = '/#pricing';
+      }
+      return;
+    }
   }
-  return
-}
 
-  setSplitPdfUrl(null);
   setSplitting(true);
-
+  
   try {
-    const { PDFDocument } = await import('pdf-lib')
-    
-    const arrayBuffer = await file.arrayBuffer()
-    const pdfDoc = await PDFDocument.load(arrayBuffer)
-    
-    pdfDoc.setTitle('')
-    pdfDoc.setAuthor('')
-    pdfDoc.setSubject('')
-    pdfDoc.setKeywords([])
-    pdfDoc.setProducer('')
-    pdfDoc.setCreator('')
+    const { PDFDocument } = await import('pdf-lib');
+    const arrayBuffer = await file.arrayBuffer();
+    const pdfDoc = await PDFDocument.load(arrayBuffer);
 
-    const splitPdfBytes = await pdfDoc.save({
-      useObjectStreams: true,
-      addDefaultPage: false,
-    })
+    // Create a new PDF and copy the selected pages
+    const newPdf = await PDFDocument.create();
+    const pageIndices = Array.from(
+      { length: endPage - startPage + 1 },
+      (_, i) => startPage - 1 + i
+    );
+    const copiedPages = await newPdf.copyPages(pdfDoc, pageIndices);
+    copiedPages.forEach(page => newPdf.addPage(page));
 
-    setSplitPdfSize(splitPdfBytes.length)
+    const splitPdfBytes = await newPdf.save();
+    const blob = new Blob([splitPdfBytes], { type: 'application/pdf' });
+    const url = URL.createObjectURL(blob);
 
-    const blob = new Blob([splitPdfBytes], { type: 'application/pdf' })
-    const url = URL.createObjectURL(blob)
+    setSplitPdfUrl(url);
 
-    setSplitPdfUrl(url)
-
-    // Increment usage if logged in
+    // Increment usage count if user is logged in
     if (user) {
-      await incrementUserOperation(user.id)
+      await incrementUserOperation(user.id);
     }
   } catch (error) {
-    console.error('Error splitting PDF:', error)
-    alert('Error splitting PDF. Please try again.')
+    console.error('Error splitting PDF:', error);
+    alert('Error splitting PDF. Please try again.');
   } finally {
-    setSplitting(false)
+    setSplitting(false);
   }
-}
+};
 
   const downloadSplitPdf = () => {
     if (!splitPdfUrl) return;
@@ -153,16 +173,47 @@ export default function SplitPDFPage() {
       />
 
       {/* Header */}
-      <header className="relative z-10 border-b border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
-          <Link href="/" className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center">
-              <FileText className="w-6 h-6" />
-            </div>
-            <span className="text-2xl font-bold font-mono">DocMerge</span>
-          </Link>
-        </div>
-      </header>
+     {/* Header */}
+<header className="relative z-10 border-b border-slate-800">
+  <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+    <Link href="/" className="flex items-center gap-3">
+      <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center">
+        <FileText className="w-6 h-6" />
+      </div>
+      <span className="text-2xl font-bold font-mono">PDFMaster</span>
+    </Link>
+
+    {/* User Section */}
+    {loading ? (
+      <div className="w-8 h-8 border-2 border-cyan-500 border-t-transparent rounded-full animate-spin"></div>
+    ) : user ? (
+      <div className="flex items-center gap-4">
+        <Link href="/dashboard" className="hidden md:flex items-center gap-3 hover:bg-slate-800/50 px-3 py-2 rounded-lg transition-colors">
+          <div className="w-8 h-8 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center">
+            <User className="w-4 h-4" />
+          </div>
+          <div className="text-left">
+            <p className="text-sm font-medium">{user.user_metadata?.full_name || 'User'}</p>
+            <p className="text-xs text-slate-400">Dashboard</p>
+          </div>
+        </Link>
+        <button
+          onClick={handleSignOut}
+          className="text-slate-400 hover:text-white transition-colors p-2 hover:bg-slate-800 rounded-lg"
+          title="Sign Out"
+        >
+          <LogOut className="w-5 h-5" />
+        </button>
+      </div>
+    ) : (
+      <Link href="/login">
+        <button className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 px-6 py-2 rounded-lg text-sm font-medium transition shadow-lg shadow-cyan-500/30">
+          Sign In
+        </button>
+      </Link>
+    )}
+  </div>
+</header>
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 py-12">
         <Link
@@ -346,4 +397,4 @@ export default function SplitPDFPage() {
     </div>
   );
 }
-}
+

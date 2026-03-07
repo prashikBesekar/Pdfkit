@@ -83,7 +83,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$stripe$2f$es
 ;
 ;
 const stripe = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$stripe$2f$esm$2f$stripe$2e$esm$2e$node$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["default"](process.env.STRIPE_SECRET_KEY, {
-    apiVersion: '2024-11-20.acacia'
+    apiVersion: '2024-10-28.acacia'
 });
 async function POST(req) {
     try {

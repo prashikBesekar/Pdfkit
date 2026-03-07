@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useCallback, useEffect } from "react";
-import { getCurrentUser } from '../lib/supabase'
+import { getCurrentUser, signOut } from '../lib/supabase'
 import { canUserPerformOperation, incrementUserOperation } from '../lib/usage'
 import UpgradeButton from '../app/components/UpgradeButton'
 
@@ -15,6 +15,8 @@ import {
   X,
   Menu,
   Scissors,
+  User,
+  LogOut, 
   Link as LucideLink,
 } from "lucide-react";
 import Link from "next/link";
@@ -30,6 +32,36 @@ export default function HomePage() {
   const [mergedPdfUrl, setMergedPdfUrl] = useState<string | null>(null);
   const [dragActive, setDragActive] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [user, setUser] = useState<any>(null)
+  const [loading, setLoading] = useState(true)
+  const [scrolled, setScrolled] = useState(false)
+
+
+  // Track scroll for header shadow
+useEffect(() => {
+  const handleScroll = () => {
+    setScrolled(window.scrollY > 20)
+  }
+  
+  window.addEventListener('scroll', handleScroll)
+  return () => window.removeEventListener('scroll', handleScroll)
+}, [])
+
+  // Check if user is logged in
+useEffect(() => {
+  const checkAuth = async () => {
+    const { user } = await getCurrentUser()
+    setUser(user)
+    setLoading(false)
+  }
+  checkAuth()
+}, [])
+
+const handleSignOut = async () => {
+  await signOut()
+  setUser(null)
+  window.location.reload()
+}
 
   const handleDrag = useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -168,7 +200,9 @@ export default function HomePage() {
       />
 
       {/* Header */}
-      <header className="relative z-10 border-b border-slate-800">
+<header className={`sticky top-0 z-50 bg-slate-950/95 backdrop-blur-sm border-b border-slate-800 transition-shadow ${
+  scrolled ? 'shadow-lg shadow-black/20' : ''
+}`}>
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
           {/* Logo */}
           <a href="/" className="flex items-center gap-3">
@@ -202,13 +236,39 @@ export default function HomePage() {
               Pricing
             </a>
           </nav>
-
-          {/* Desktop CTA Button */}
-          <Link href="/login">
-          <button className="hidden md:block bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 px-6 py-2 rounded-lg text-sm font-medium transition shadow-lg shadow-cyan-500/30">
+ <div className="hidden md:flex items-center gap-4">
+      {loading ? (
+        <div className="w-8 h-8 border-2 border-cyan-500 border-t-transparent rounded-full animate-spin"></div>
+      ) : user ? (
+        <>
+          {/* User Info */}
+          <Link href="/dashboard" className="flex items-center gap-3 hover:bg-slate-800/50 px-3 py-2 rounded-lg transition-colors">
+            <div className="w-8 h-8 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center">
+              <User className="w-4 h-4" />
+            </div>
+            <div className="text-left">
+              <p className="text-sm font-medium">{user.user_metadata?.full_name || 'User'}</p>
+              <p className="text-xs text-slate-400">Dashboard</p>
+            </div>
+          </Link>
+          
+          {/* Sign Out Button */}
+          <button
+            onClick={handleSignOut}
+            className="text-slate-400 hover:text-white transition-colors p-2 hover:bg-slate-800 rounded-lg"
+            title="Sign Out"
+          >
+            <LogOut className="w-5 h-5" />
+          </button>
+        </>
+      ) : (
+        <Link href="/login">
+          <button className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 px-6 py-2 rounded-lg text-sm font-medium transition shadow-lg shadow-cyan-500/30">
             Sign In
           </button>
         </Link>
+      )}
+    </div>
 
           {/* Mobile Menu Button */}
           <button
@@ -256,15 +316,50 @@ export default function HomePage() {
               >
                 💰 Pricing
               </a>
-              <Link href="/login" className="w-full">
-              <button className="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 px-4 py-3 rounded-lg text-sm font-medium transition shadow-lg shadow-cyan-500/30">
-                Sign In
-              </button>
+              {loading ? (
+          <div className="px-4 py-3 flex justify-center">
+            <div className="w-6 h-6 border-2 border-cyan-500 border-t-transparent rounded-full animate-spin"></div>
+          </div>
+        ) : user ? (
+          <>
+            <Link
+              href="/dashboard"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block px-4 py-3 bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors"
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center">
+                  <User className="w-4 h-4" />
+                </div>
+                <div>
+                  <p className="text-sm font-medium">{user.user_metadata?.full_name || 'User'}</p>
+                  <p className="text-xs text-slate-400">Go to Dashboard</p>
+                </div>
+              </div>
             </Link>
+            <button
+              onClick={handleSignOut}
+              className="w-full px-4 py-3 bg-red-600/20 hover:bg-red-600/30 text-red-400 rounded-lg transition-colors flex items-center justify-center gap-2"
+            >
+              <LogOut className="w-4 h-4" />
+              Sign Out
+            </button>
+          </>
+        ) : (
+          <Link href="/login" className="w-full block" onClick={() => setMobileMenuOpen(false)}>
+            <button className="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 px-4 py-3 rounded-lg text-sm font-medium transition shadow-lg shadow-cyan-500/30">
+              Sign In
+            </button>
+          </Link>
+        )}
+
             </nav>
           </div>
         )}
       </header>
+
+
+
       {/* Hero Section */}
       <section className="relative z-10 max-w-7xl mx-auto px-4 pt-20 pb-16">
         <section className="text-center max-w-4xl mx-auto mb-16">

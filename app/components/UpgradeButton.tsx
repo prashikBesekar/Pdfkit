@@ -48,6 +48,7 @@ export default function UpgradeButton({
       const stripe = await stripePromise;
       if (stripe) {
         const { error } = await stripe.redirectToCheckout({ sessionId: data.sessionId });
+        console.error('Stripe error:', error);
         if (error) throw error;
       }
     } else {

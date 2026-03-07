@@ -1,9 +1,9 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { getCurrentUser } from '@/lib/supabase'
-import { canUserPerformOperation, incrementUserOperation } from '@/lib/usage'
-import { Upload, Download, Check, Minimize2, ArrowLeft } from 'lucide-react'
+import { getCurrentUser, signOut } from '../../../lib/supabase'
+import { canUserPerformOperation, incrementUserOperation } from '../../../lib/usage'
+import { Upload, Download, Check, Minimize2, ArrowLeft, User, LogOut, FileText} from 'lucide-react'
 import Link from 'next/link'
 
 export default function CompressPDFPage() {
@@ -17,6 +17,23 @@ export default function CompressPDFPage() {
   const [compressedPdfUrl, setCompressedPdfUrl] = useState<string | null>(null)
   const [originalSize, setOriginalSize] = useState(0)
   const [compressedSize, setCompressedSize] = useState(0)
+  const [user, setUser] = useState<any>(null)
+const [loading, setLoading] = useState(true)
+
+
+useEffect(() => {
+  const checkAuth = async () => {
+    const { user } = await getCurrentUser()
+    setUser(user)
+    setLoading(false)
+  }
+  checkAuth()
+}, [])
+
+const handleSignOut = async () => {
+  await signOut()
+  window.location.href = '/'
+}
 
   const handleFileInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -129,13 +146,53 @@ export default function CompressPDFPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
+      <header className="relative z-10 border-b border-slate-800">
+  <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+    <Link href="/" className="flex items-center gap-3">
+      <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center">
+        <FileText className="w-6 h-6" />
+      </div>
+      <span className="text-2xl font-bold font-mono">PDFMaster</span>
+    </Link>
+
+    {/* User Section */}
+    {loading ? (
+      <div className="w-8 h-8 border-2 border-cyan-500 border-t-transparent rounded-full animate-spin"></div>
+    ) : user ? (
+      <div className="flex items-center gap-4">
+        <Link href="/dashboard" className="hidden md:flex items-center gap-3 hover:bg-slate-800/50 px-3 py-2 rounded-lg transition-colors">
+          <div className="w-8 h-8 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center">
+            <User className="w-4 h-4" />
+          </div>
+          <div className="text-left">
+            <p className="text-sm font-medium">{user.user_metadata?.full_name || 'User'}</p>
+            <p className="text-xs text-slate-400">Dashboard</p>
+          </div>
+        </Link>
+        <button
+          onClick={handleSignOut}
+          className="text-slate-400 hover:text-white transition-colors p-2 hover:bg-slate-800 rounded-lg"
+          title="Sign Out"
+        >
+          <LogOut className="w-5 h-5" />
+        </button>
+      </div>
+    ) : (
+      <Link href="/login">
+        <button className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 px-6 py-2 rounded-lg text-sm font-medium transition shadow-lg shadow-cyan-500/30">
+          Sign In
+        </button>
+      </Link>
+    )}
+  </div>
+</header>
       <div className="max-w-4xl mx-auto px-4 py-12">
-        <Link href="/" className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 mb-8 transition-colors">
+        <Link href="/" className="inline-flex  items-center gap-2 text-blue-400 hover:text-blue-300 mb-8 transition-colors">
           <ArrowLeft className="w-4 h-4" />
           Back to Home
         </Link>
 
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 ">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-sky-500 to-blue-500 rounded-2xl mb-4">
             <Minimize2 className="w-8 h-8" />
           </div>

@@ -14,7 +14,7 @@ import {
   Scissors,
   Check
 } from "lucide-react";
-import { getCurrentUser, signOut } from "../../lib/supabase";
+import { getCurrentUser, signOut, supabase } from "../../lib/supabase";
 import { getUserUsageStats } from "../../lib/usage";
 import UpgradeButton from "../components/UpgradeButton";
 
@@ -50,6 +50,34 @@ export default function DashboardPage() {
     await signOut();
     router.push("/");
   };
+
+  const handleTestUpgrade = async () => {
+  if (!user) return;
+  
+  const confirm = window.confirm('Upgrade to Premium for testing? (This is a test mode upgrade)');
+  if (!confirm) return;
+
+  try {
+    const { error } = await supabase
+      .from('user_usage')
+      .update({
+        subscription_status: 'active',
+        updated_at: new Date().toISOString(),
+      })
+      .eq('user_id', user.id);
+
+    if (error) {
+      console.error('Error upgrading:', error);
+      alert('Error upgrading account');
+    } else {
+      alert('Successfully upgraded to Premium! Refresh the page.');
+      window.location.reload();
+    }
+  } catch (err) {
+    console.error('Upgrade error:', err);
+    alert('An error occurred');
+  }
+};
 
   if (loading) {
     return (
@@ -234,7 +262,22 @@ export default function DashboardPage() {
             View Plans
           </Link>
         </div>
-
+{/* Test Upgrade Button - REMOVE BEFORE PRODUCTION! */}
+<div className="bg-gradient-to-br from-yellow-500/10 to-amber-500/10 border border-yellow-500/20 rounded-xl p-6">
+  <div className="mb-4">
+    <div className="w-12 h-12 bg-yellow-500/20 rounded-lg flex items-center justify-center mx-auto">
+      <Zap className="w-6 h-6 text-yellow-400" />
+    </div>
+  </div>
+  <h3 className="text-lg font-semibold mb-3 text-center">Test Mode</h3>
+  <button
+    onClick={handleTestUpgrade}
+    className="w-full bg-yellow-600 hover:bg-yellow-700 px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+  >
+    Instant Premium
+  </button>
+  <p className="text-xs text-slate-500 mt-2 text-center">For testing only</p>
+</div>
         {/* Recent Activity */}
         <div className="mt-12">
           <h2 className="text-2xl font-bold mb-6">Recent Activity</h2>
